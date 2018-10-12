@@ -16,7 +16,7 @@ pipeline {
                 script {
                     app = docker.build("venki223/train-schedule")
                     app.inside {
-                        sh 'echo $(curl localhost:8080)'
+                        sh 'echo $(curl http://34.234.225.122:8080)'
                     }
                 }
             }
