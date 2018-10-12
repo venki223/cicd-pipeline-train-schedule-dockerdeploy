@@ -16,7 +16,7 @@ pipeline {
                 script {
                     app = docker.build("venki223/train-schedule")
                     app.inside {
-                        sh 'echo $(curl http://34.234.225.122:8080)'
+                        sh 'echo $(curl localhost:8080)'
                     }
                 }
             }
@@ -27,7 +27,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
+                    docker.withRegistry('https://hub.docker.com', 'docker_hub_login') {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
